@@ -7,6 +7,8 @@ If anyone wants to grab this and build over it or whatever go crazy. This is for
 
 Any issues or bugs you see, I'll try to get at any really broken ones, no promises. Any features your thinking of, same thing. If I like it then I'll do it when I can. God speed.
 
+Also sorry about the sped through gif, needed the video to be 30 seconds or less lol.
+
 # Media Cycler
 
 A SillyTavern extension that cycles through background images and videos in its own window while you chat. Add a home list or per-character lists, control playback, and use movable or fullscreen modes.
