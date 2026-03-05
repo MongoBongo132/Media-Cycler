@@ -1,3 +1,7 @@
+
+![Demo](ezgif-888b0ff2a974847d.gif)
+
+
 # Media Cycler
 
 A SillyTavern extension that cycles through background images and videos in its own window while you chat. Add a home list or per-character lists, control playback, and use movable or fullscreen modes.
