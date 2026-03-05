@@ -19,7 +19,7 @@ A SillyTavern extension that cycles through background images and videos in its 
 
 ## Installation
 
-**Option A – Install from SillyTavern:** In SillyTavern, open the Extensions panel and use the option to install an extension from a URL. Paste this repo’s GitHub link (e.g. `https://github.com/YourUsername/Media-Cycler`) and install. SillyTavern will download and place the extension for you.
+**Option A – Install from SillyTavern:** In SillyTavern, open the Extensions panel and use the option to install an extension from a URL. Paste this repo’s GitHub link (e.g. `https://github.com/MongoBongo132/Media-Cycler`) and install. SillyTavern will download and place the extension for you.
 
 **Option B – Manual install:** Copy the `Media-Cycler` folder into your SillyTavern extensions folder:
 - `SillyTavern/data/default-user/extensions/Media-Cycler`
