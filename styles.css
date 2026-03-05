@@ -1,0 +1,221 @@
+/**
+ * Media Cycler Extension Styles
+ * Version 3.0 - Fixed Resize & Movable
+ */
+
+/* Only essential styles that need to be available immediately */
+.media-cycler-container,
+.media-cycler-controls {
+    position: fixed;
+    z-index: 9998;
+}
+
+/* Container styling - allow resize only when movable */
+.media-cycler-container.movable-enabled {
+    pointer-events: auto !important;
+    resize: both !important;
+    overflow: auto !important; /* Auto allows resize handle to work while still showing overflow content */
+    /* Don't override display - let JavaScript control visibility */
+    min-width: 200px !important;
+    min-height: 200px !important;
+    max-width: 90vw !important;
+    max-height: 100vh !important;
+    border: 1px solid transparent;
+    border-radius: 0 !important;
+    transition: border-color 0.2s ease;
+    position: fixed !important; /* Keep fixed positioning for proper coordinate conversion */
+}
+
+
+.media-cycler-container.movable-enabled:hover {
+    border-color: rgba(76, 175, 80, 0.8) !important;
+    box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3) !important;
+}
+
+.media-cycler-container:not(.movable-enabled) {
+    pointer-events: none;
+    resize: none !important;
+}
+
+/* Controls styling - allow move only when movable (no resize for circle) */
+.media-cycler-controls.movable-enabled {
+    pointer-events: auto !important;
+    resize: none !important; /* Circle is never resizable, only movable */
+    overflow: visible !important;
+    border: 1px solid transparent !important;
+    transition: border-color 0.2s ease !important;
+}
+
+/* Hover effect for controls now controlled by JavaScript */
+
+.media-cycler-controls:not(.movable-enabled) {
+    pointer-events: auto; /* Controls should always be interactive */
+    resize: none !important;
+}
+
+/* Different cursors for different interactions */
+.media-cycler-container.movable-enabled,
+.media-cycler-controls.movable-enabled {
+    cursor: move;
+}
+
+.media-cycler-container.movable-enabled:hover,
+.media-cycler-controls.movable-enabled:hover {
+    cursor: move;
+}
+
+/* Remove conflicting rule - resize is handled per element above */
+
+/* Remove the browser's default resize handle arrow/indicator */
+.media-cycler-container.movable-enabled::-webkit-resizer,
+.media-cycler-controls.movable-enabled::-webkit-resizer {
+    background: transparent !important;
+    border: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.media-cycler-container.movable-enabled::-moz-resizer,
+.media-cycler-controls.movable-enabled::-moz-resizer {
+    border: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Basic button styles that match ST theme */
+.menu-button.media-cycler-btn {
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    padding: 6px 10px;
+    background: var(--button-bg, transparent);
+    color: var(--text-color, inherit);
+    border: 1px solid var(--border-color, rgba(255,255,255,0.2));
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+}
+
+.menu-button.media-cycler-btn:hover {
+    filter: brightness(1.2);
+    transform: translateY(-1px);
+}
+
+.menu-button.media-cycler-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.menu-button.media-cycler-btn:disabled:hover {
+    filter: none;
+    transform: none;
+}
+
+/* Hover effects for better UX - now controlled by JavaScript */
+
+/* Active state for when actually dragging/resizing */
+.media-cycler-container.movable-dragging,
+.media-cycler-controls.movable-dragging {
+    border-color: #4CAF50 !important;
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4) !important;
+    opacity: 0.95;
+    z-index: 10001 !important;
+}
+
+/* Minimal UI Styles */
+.media-cycler-minimal-ui {
+    position: fixed;
+    z-index: 10000;
+    background: var(--media-cycler-bg, var(--bg-primary, rgba(0,0,0,0.9)));
+    border-radius: 20px;
+    padding: 8px;
+    border: 1px solid var(--media-cycler-border, var(--border-color, #666));
+    cursor: move;
+    opacity: 0.5; /* Less obtrusive when hidden */
+    transition: opacity 0.2s ease;
+    resize: none !important;
+    overflow: visible !important;
+    /* Don't use bottom/left - use top/left set via JS to prevent stretching */
+}
+
+/* Dock container that holds one or both show buttons */
+.media-cycler-dock {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.media-cycler-minimal-ui .media-cycler-show-ui {
+    background: var(--button-bg, transparent);
+    color: var(--text-color, inherit);
+    border: 1px solid var(--border-color, rgba(255,255,255,0.2));
+    border-radius: 14px;
+    padding: 6px 12px;
+    font-size: 10px;
+    cursor: pointer !important;
+}
+
+.media-cycler-minimal-ui .media-cycler-show-ui:hover { opacity: 0.9; }
+
+.media-cycler-minimal-ui:hover {
+    opacity: 1; /* Fully visible on hover */
+}
+
+.media-cycler-hide, .media-cycler-hide:hover {
+    background: var(--button-bg, transparent) !important;
+    color: var(--text-color, inherit) !important;
+}
+
+/* Reset button - ensure non-white background with white text */
+.media-cycler-reset, .media-cycler-reset:hover {
+    background: var(--button-bg, transparent) !important;
+    color: var(--text-color, inherit) !important;
+}
+
+/* Reset Files button - strong destructive color distinct from hide */
+.media-cycler-reset-files {
+    background: var(--danger-bg, transparent) !important;
+    color: var(--danger-fg, var(--text-color, inherit)) !important;
+    border-color: var(--danger-border, var(--border-color, rgba(255,255,255,0.2))) !important;
+}
+.media-cycler-reset-files:hover { opacity: 0.9; }
+
+/* Audio toggle button - use theme */
+.media-cycler-audio, .media-cycler-audio:hover {
+    background: var(--button-bg, transparent) !important;
+    color: var(--text-color, inherit) !important;
+}
+
+/* Group the reset actions together visually */
+.media-cycler-reset-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 6px;
+    background: var(--bg-primary, rgba(255, 255, 255, 0.06));
+    border: 1px solid var(--border-color, rgba(255, 0, 0, 0.25));
+}
+
+.media-cycler-reset-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-color, rgba(255,255,255,0.7));
+    margin-right: 2px;
+}
+
+/* Media wrapper - rounded border matching theme */
+.media-cycler-media-wrapper {
+    border-radius: 8px;
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.3));
+    box-sizing: border-box;
+}
+

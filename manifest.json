@@ -1,0 +1,11 @@
+{
+    "display_name": "Media Cycler",
+    "loading_order": 10,
+    "requires": [],
+    "js": "script.js",
+    "css": "styles.css",
+    "settings": "settings.html",
+    "author": "Goomba",
+    "version": "1.0.0",
+    "homePage": ""
+}
