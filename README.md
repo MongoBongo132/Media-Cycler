@@ -1,6 +1,11 @@
 
 ![Demo](ezgif-888b0ff2a974847d.gif)
 
+Add Videos(Audio viable) and images to your roleplay sessions. It cycles through the list of media you selected on your PC file explorer, can shuffle too. All stored locally on your specific browser, so follows session to session. Settings as well. Media Lists can be general, or character specific. Resize it to what you want etc. Background videos with music or sounds is nice for me specificly. 
+
+If anyone wants to grab this and build over it or whatever go crazy. This is for my own use first and foremost, just figured I'd throw it on GitHub and share for anyone interested.
+
+Any issues or bugs you see, I'll try to get at any really broken ones, no promises. Any features your thinking of, same thing. If I like it then I'll do it when I can. God speed.
 
 # Media Cycler
 
@@ -41,14 +46,6 @@ No npm or extra dependencies; the extension uses only SillyTavern’s bundled en
 
 ## Known limitations
 
-- **Browsers** – Media are stored in IndexedDB (no File System Access API). Large libraries may be limited by the browser’s storage quota.
+- **Browsers** – Media are stored in IndexedDB (So creates copies of the files and stored on your browser essentially).
 - **Storage** – Large media libraries may hit browser storage limits; the extension reports capacity where possible.
-- **Tested only on Windows with Edge and Firefox** – Other platforms and browsers are unsupported for this release.
-
-## Screenshots / demo
-
-*(Add screenshots or a short video here when you have them – e.g. cycler window with media, settings panel, or character list UI.)*
-
-## License
-
-See [LICENSE](LICENSE) in this repository.
+- **Tested only on Windows with Edge and Firefox** – Other platforms and browsers will be unlikely tested on.
